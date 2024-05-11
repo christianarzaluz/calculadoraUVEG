@@ -1,8 +1,12 @@
+// Desarrollado por Christian Arzaluz para el R1U1 del  módulo POO
+// Importando paquetes
+    
 package com.mycompany.calculadorafinal;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
+// Clase Calculadora
 
 public class CalculadoraFinal extends JFrame implements ActionListener {
     private JTextField inputField;
@@ -10,6 +14,8 @@ public class CalculadoraFinal extends JFrame implements ActionListener {
     private double result = 0;
     private char operator = ' ';
     private boolean isDecimal = false;
+
+// Estilo de la interfaz
 
     public CalculadoraFinal() {
         setTitle("Calculadora");
@@ -42,6 +48,8 @@ public class CalculadoraFinal extends JFrame implements ActionListener {
         add(buttonsPanel, BorderLayout.CENTER);
     }
 
+// Lógica del input
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
@@ -69,6 +77,8 @@ public class CalculadoraFinal extends JFrame implements ActionListener {
         }
     }
 
+// División entre 0 = Error, mostrar números enteros si el resultado es entero y viceversa
+
     private void calculateResult() {
         try {
             result = evaluateExpression(inputString);
@@ -87,7 +97,9 @@ public class CalculadoraFinal extends JFrame implements ActionListener {
             isDecimal = false;
         }
     }
-
+    
+// Lógica de las operaciones
+    
     private double evaluateExpression(String expression) {
         String[] elements = expression.split(" ");
         double operand1 = Double.parseDouble(elements[0]);
@@ -111,12 +123,15 @@ public class CalculadoraFinal extends JFrame implements ActionListener {
         }
     }
 
+// Limpiar el input
+
     private void clearInput() {
         inputString = "";
         inputField.setText("");
         isDecimal = false;
     }
-
+// Método MAIN
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             CalculadoraFinal calculator = new CalculadoraFinal();
